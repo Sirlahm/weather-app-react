@@ -1,0 +1,84 @@
+$color-grey : #6f6f6f;
+
+.forecast {
+    padding: 4rem;
+    background-position: center;
+    min-height: calc(100vh - 6rem);
+    background-image: url(../../assests/unsplash22.jpg);
+    display: grid;
+   
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    grid-gap: 4rem;
+    color: #131425;
+    background-size: cover; 
+    @media only screen and (max-width: 50em) {
+        
+    
+        font-size: 2rem;
+            
+        }
+
+&__head{
+    grid-column: 1 / -1;
+    transform: skewX(-10deg);
+    font-size: 5rem;
+    color: #6f6f6f;
+    text-align: center;
+    
+    letter-spacing: 1rem;
+    font-family: 'Bangers', cursive;
+    @media only screen and (max-width: 50em) {
+        
+        transform: skewX(-3deg);
+    font-size: 2rem;
+        
+    }
+}
+
+
+}
+.pagination {
+    grid-column:1/-1;
+    margin: 5rem auto;
+    display: flex;
+    list-style: none;
+    outline: none;
+    justify-content: center;
+  }
+  .pagination > .active > a{
+    background-color: $color-grey ;
+    border-color: $color-grey ;
+    color: #fff;
+  }
+  .pagination > li > a{
+    border: 1px solid white ;
+    padding: 5px 10px;
+    outline: none;
+    cursor: pointer;
+    color: #fff !important;
+  }
+  .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
+    background-color: $color-grey ;
+    border-color: $color-grey;
+    outline: none ;
+  }
+  .pagination > li > a, .pagination > li > span{
+    color: $color-grey
+  }
+  .pagination > li:first-child > a, .pagination > li:first-child > span, .pagination > li:last-child > a, .pagination > li:last-child > span{
+    border-radius: unset
+  } 
+
+  .util{
+    grid-column: 1/-1;
+    text-align: center;
+    font-size: 2rem;
+    color: white;
+    letter-spacing: 2rem;
+    @media only screen and (max-width: 50em) {
+        
+    
+        font-size: 1.2rem;
+            
+        }
+  }
