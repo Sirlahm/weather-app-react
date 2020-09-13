@@ -8,10 +8,10 @@ import '../current-weather/current-weather.scss'
 import {getSearch,getSearchState} from '../../redux/search/search.action'
 
 
-const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
-const KEYSPLASH = process.env.REACT_APP_UNSPLASH_API_KEY
+const WEATHER_KEY= process.env.REACT_APP_WEATHER_API_KEY;
+const UNSPLASH_KEY = process.env.REACT_APP_UNSPLASH_API_KEY
 
-const unsplash = new Unsplash({accessKey : `${KEYSPLASH}`})
+const unsplash = new Unsplash({accessKey : `${UNSPLASH_KEY}`})
 
 
 class CurrentState extends React.Component {
@@ -32,7 +32,7 @@ class CurrentState extends React.Component {
         this.props.getSearch(this.props.match.params.collectionId)
        
         try {const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?q=${this.props.match.params.collectionId}&appid=${API_KEY}`)
+            `https://api.openweathermap.org/data/2.5/weather?q=${this.props.match.params.collectionId}&appid=${WEATHER_KEY}`)
         
         const resJson = await response.json()
         

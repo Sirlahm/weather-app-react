@@ -13,6 +13,9 @@ $color-white: #fff;
     justify-content: center;
     color: #131415;
     background-size: cover;
+    @media only screen and (max-width: 50em) {
+     height: 100vh;
+  }
   &__head {
     transform: skewX(-10deg);
     font-size: 4rem;

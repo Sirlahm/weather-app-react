@@ -6,7 +6,7 @@ import ReactPaginate from 'react-paginate';
 
 
 
-const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
+const WEATHER_KEY= process.env.REACT_APP_WEATHER_API_KEY;
 class ForeCast extends React.Component {
     constructor(props) {
       super(props);
@@ -44,7 +44,7 @@ class ForeCast extends React.Component {
    
    componentWillMount() {
     fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${this.props.searchItem}&appid=${API_KEY}`)
+        `https://api.openweathermap.org/data/2.5/forecast?q=${this.props.searchItem}&appid=${WEATHER_KEY}`)
       .then(response => response.json())
       .then(resJson => this.setState({items:resJson.list}, () => {this.receivedData()}))
       
