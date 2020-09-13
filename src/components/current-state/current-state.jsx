@@ -31,7 +31,7 @@ class CurrentState extends React.Component {
      getWeather = async () => {
         this.props.getSearch(this.props.match.params.collectionId)
        
-        try {const response = await axios(
+        try {const response = await fetch(
             `https://api.openweathermap.org/data/2.5/weather?q=${this.props.match.params.collectionId}&appid=${API_KEY}`)
         
         const resJson = await response.json()

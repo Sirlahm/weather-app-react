@@ -32,7 +32,7 @@ const handleSubmit = async (e) => {
     e.preventDefault()
     
     setSearch('')
-    try {const response = await axios(
+    try {const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${API_KEY}`)
     
     const resJson = await response.json()
