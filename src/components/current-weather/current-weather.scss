@@ -7,7 +7,7 @@ $color-white: #fff;
 .current {
     background-position: center;
     height: calc(100vh - 4rem);
-    // background-color: rgba(52, 253, 220, 0.3 );
+    
     position: relative;
     display: flex;
     justify-content: center;
@@ -23,7 +23,7 @@ $color-white: #fff;
     font-family: 'Bangers', cursive;
     @media only screen and (max-width: 50em) {
         text-align: center;
-        font-size: 3.5rem;
+        font-size: 3rem;
         letter-spacing: 1rem;
     }
   }
@@ -150,7 +150,7 @@ $color-white: #fff;
 
   &::after {
       content: '';
-      background-image: url(../../assests/unsplash2.jpg);
+      background-image: url(../../assests/unsplashTwo.jpg);
       background-size: cover;
       background-position: center;
       width: 100%;

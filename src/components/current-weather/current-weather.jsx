@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-
+import axios from 'axios'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import Unsplash, {toJson} from 'unsplash-js';
@@ -32,7 +32,7 @@ const handleSubmit = async (e) => {
     e.preventDefault()
     
     setSearch('')
-    try {const response = await fetch(
+    try {const response = await axios(
         `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${API_KEY}`)
     
     const resJson = await response.json()
@@ -70,7 +70,7 @@ const onSearchSubmit = async (e) => {
 
 
 
-const funClick = (e) => {
+const funcClick = (e) => {
     
     handleSubmit(e)
     onSearchSubmit(e)
@@ -91,7 +91,7 @@ const funClick = (e) => {
                value={search}
                onChange={event => setSearch(event.target.value)}
                />
-               <button className='current__button' onClick={funClick}>
+               <button className='current__button' onClick={funcClick}>
                    <SearchLogo className='search__logo'/>
                    <span>search</span>
                    
@@ -105,9 +105,7 @@ const funClick = (e) => {
                 <p>FEELS LIKE : {feel ? `${feel} Degrees Celsius` : ''} </p>
                 <p>WEATHER PARAMETER: {para} </p>
                 <p>DESCRIPTION : {description} </p>
-              
-
-               
+      
            </div>
            
            <Link to='/forecast' className='current__link'>GET FORECAST FOR EVERY THREE HOURS FOR NEXT FIVE DAYS</Link>
