@@ -37,7 +37,7 @@ class CurrentState extends React.Component {
         const resJson = await response.json()
         
         
-        if(resJson.length>2) this.setState({name:resJson.name,
+       this.setState({name:resJson.name,
             temp:resJson.main.temp, 
             feel:resJson.main.feels_like,
             para:resJson.weather[0].main,
@@ -71,7 +71,7 @@ class CurrentState extends React.Component {
        
         
     }
-   componentWillMount() {
+   UNSAFE_componentWillMount() {
     this.getWeather()
     this.getImage()
       
@@ -79,7 +79,7 @@ class CurrentState extends React.Component {
    
   
  render() {
-
+    
     return (
         <div className='current' style={{backgroundImage: `url(${this.state.image && this.state.name ? this.state.image.urls.regular : 'unsplashTwo.jpg'})`}}>
              

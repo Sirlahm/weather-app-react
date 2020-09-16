@@ -15,9 +15,9 @@ function App() {
       <Route exact path='/' component={CurrentWeather}/>
       <Route exact path='/forecast' component={ForeCast}/>
       < Route path={`/:collectionId`} component={CurrentState}  />
-
-      </Switch>
   
+      </Switch> 
+              
 
     </div>
     

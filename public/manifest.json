@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Forecaster",
+  "name": "Forecaster by Sirlahm",
   "icons": [
     {
       "src": "favicon.ico",
