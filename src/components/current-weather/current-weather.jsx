@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import axios from 'axios'
+
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import Unsplash, {toJson} from 'unsplash-js';
@@ -15,7 +15,6 @@ const unsplash = new Unsplash({accessKey : `${UNSPLASH_KEY}`})
 
 const CurrentWeather = ({getSearch,getSearchState}) => {
     
-
     const [search, setSearch] = useState('')
     
     const [image,setImage] = useState('')
@@ -35,7 +34,7 @@ const handleSubmit = async (e) => {
     try {const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${WEATHER_KEY}`)
     
-    const resJson = await response.json()
+     const resJson = await response.json()
     
     
     setDetails({name:resJson.name,
@@ -43,11 +42,17 @@ const handleSubmit = async (e) => {
         feel:resJson.main.feels_like,
         para:resJson.weather[0].main,
         description:resJson.weather[0].description})
+        
         getSearchState(resJson.name)
 }
     catch(error) {
        
-       alert(error)
+       alert('ERROR IN PROCESSING :( ... TRY AGAIN')
+       setDetails({name:'',
+        temp:'', 
+        feel:'',
+        para:'',
+        description:''})
     }
     
 
@@ -78,8 +83,9 @@ const funcClick = (e) => {
 
 
 
+
     return (
- <div className='current' style={{backgroundImage: `url(${image ? image.urls.regular : 'unsplashTwo.jpg'})`}}>
+ <div className='current' style={{backgroundImage: `url(${image && name ? image.urls.regular : 'unsplashTwo.jpg'})`}}>
       
       <div className='current__item'>
       <h1 className='current__head'>WEATHER FORECASTER</h1>

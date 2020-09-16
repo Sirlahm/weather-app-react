@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from 'axios'
+
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import Unsplash, {toJson} from 'unsplash-js';
@@ -37,7 +37,7 @@ class CurrentState extends React.Component {
         const resJson = await response.json()
         
         
-        this.setState({name:resJson.name,
+        if(resJson.length>2) this.setState({name:resJson.name,
             temp:resJson.main.temp, 
             feel:resJson.main.feels_like,
             para:resJson.weather[0].main,
@@ -47,6 +47,11 @@ class CurrentState extends React.Component {
         catch(error) {
            
            alert('ERROR IN PROCESSING :( ... TRY AGAIN')
+           this.setState({name:'',
+            temp:'', 
+            feel:'',
+            para:'',
+            description:''})
         }
         
     
@@ -76,7 +81,7 @@ class CurrentState extends React.Component {
  render() {
 
     return (
-        <div className='current' style={{backgroundImage: `url(${this.state.image ? this.state.image.urls.regular : 'unsplashTwo.jpg'})`}}>
+        <div className='current' style={{backgroundImage: `url(${this.state.image && this.state.name ? this.state.image.urls.regular : 'unsplashTwo.jpg'})`}}>
              
              <div className='current__item'>
              <h1 className='current__head'>WEATHER FORECASTER</h1>
@@ -110,116 +115,6 @@ class CurrentState extends React.Component {
 }
 
 
-
-
-// const CurrentState = ({getSearch,getSearchState,match}) => {
-    
-
-//     const [search, setSearch] = useState('')
-    
-//     const [image,setImage] = useState('')
-//     const [details, setDetails] = useState({temp:'',feel:'',para:'',description:'',name:''})
-    
-    
-//     const { name,temp,feel,para,description}= details
-    
-
-
-
-// const handleSubmit = async (e) => {
-//     getSearch(match.params.collectionId)
-//     e.preventDefault()
-    
-//     setSearch('')
-//     try {const response = await fetch(
-//         `https://api.openweathermap.org/data/2.5/weather?q=${match.params.collectionId}&appid=${API_KEY}`)
-    
-//     const resJson = await response.json()
-    
-    
-//     setDetails({name:resJson.name,
-//         temp:resJson.main.temp, 
-//         feel:resJson.main.feels_like,
-//         para:resJson.weather[0].main,
-//         description:resJson.weather[0].description})
-//         getSearchState(resJson.name)
-// }
-//     catch(error) {
-       
-//        alert(error)
-//     }
-    
-
-// }
-
-// const onSearchSubmit = async (e) => {
-//     e.preventDefault()
-    
-//     unsplash.search.photos('weather',1,30)
-//     .then(toJson)
-//     .then(json =>{
-        
-//         setImage(json.results[Math.floor(Math.random() * 30 + 1)]
-        
-//         )}
-//     )
-   
-    
-// }
-
-
-
-// const funClick = (e) => {
-    
-//     handleSubmit(e)
-//     onSearchSubmit(e)
-// }
-
-
-
-//     return (
-//  <div className='current' style={{backgroundImage: `url(${image ? image.urls.regular : 'unsplashTwo.jpg'})`}}>
-      
-//       <div className='current__item'>
-//       <h1 className='current__head'>WEATHER FORECASTER</h1>
-
-//             <form className='current__form'>
-//                <input className='current__input'
-//                placeholder='search for your favourite state Current Weather'
-//                type='text'
-//                value={search}
-//                onChange={event => setSearch(event.target.value)}
-//                />
-//                <button className='current__button' onClick={funClick}>
-//                    <SearchLogo className='search__logo'/>
-//                    <span>search</span>
-                   
-//                    </button>
-
-//            </form>
-//            <div className='current__details'>
-                
-//     <p>CITY : {name}</p>
-//                 <p>MAIN TEMPERATURE : {temp ? `${temp} Degrees Celsius` : ''} </p>
-//                 <p>FEELS LIKE : {feel ? `${feel} Degrees Celsius` : ''} </p>
-//                 <p>WEATHER PARAMETER: {para} </p>
-//                 <p>DESCRIPTION : {description} </p>
-              
-
-               
-//            </div>
-           
-//            <Link to='/forecast' className='current__link'>GET FORECAST FOR EVERY THREE HOURS FOR NEXT FIVE DAYS</Link>
-
-//       </div>
-        
-
-//  </div>
-     
-   
-        
-//     )
-// }
 
 
 const mapDispatchToProps = dispatch => ({
